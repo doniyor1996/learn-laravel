@@ -16,4 +16,18 @@ class Controller extends BaseController
     {
         User::create();
     }
+
+    protected function responseSuccess(array $data)
+    {
+        return response()->json([
+            'data' => $data
+        ]);
+    }
+
+    protected function responseError(array $data)
+    {
+        return response()->json([
+            'data' => $data
+        ], 422);
+    }
 }
