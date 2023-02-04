@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,7 @@ Route::get('/', function () {
 });
 
 Route::get('/hello', [TestController::class, 'testView']);
+Route::get('/categories/create', [CategoryController::class, 'create']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
