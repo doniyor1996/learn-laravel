@@ -25,4 +25,6 @@ Route::get('/test', [TestController::class, 'testRoute']);
 Route::prefix('categories')->group(function () {
     Route::get('/', [CategoryController::class, 'index']);
     Route::get('/{category}', [CategoryController::class, 'show']);
+    Route::get('/{category}/products', [CategoryController::class, 'products']);
+    Route::get('/{category}/products/{product}', [CategoryController::class, 'product']);
 });
