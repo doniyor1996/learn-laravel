@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -16,10 +17,12 @@ class CategorySeeder extends Seeder
     public function run()
     {
         Category::factory()
-            ->count(10)
+            ->count(5)
+            ->has(Product::factory()->count(10))
             ->create();
 
         Category::factory()
+            ->has(Product::factory()->count(5))
             ->create([
                 'icon' => 'bus-icon',
             ]);
