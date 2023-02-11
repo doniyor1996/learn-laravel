@@ -19,10 +19,9 @@ class CategoryController extends Controller
         return $this->responseSuccess(Category::all()->toArray());
     }
 
-    public function create()
-    {
-        return view('categories.create');
-    }
+   
+
+ 
     /**
      * Store a newly created resource in storage.
      *

@@ -28,6 +28,21 @@ class CategoryController extends Controller
         //
     }
 
+    public function create()
+    {
+        return view('categories.create');
+    }
+
+
+    public function category()
+    {
+        $categories = Category::all();
+    
+        return view('categories.index',['categories' => $categories]);
+    }
+
+
+
     /**
      * Display the specified resource.
      *
