@@ -37,7 +37,7 @@ class CategoryController extends Controller
     public function category()
     {
         $categories = Category::all();
-    
+
         return view('categories.index',['categories' => $categories]);
     }
 
