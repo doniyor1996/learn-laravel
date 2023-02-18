@@ -22,10 +22,7 @@ Route::get('/', function () {
 });
 
 Route::get('/hello', [TestController::class, 'testView']);
-Route::get('/categories/create', [CategoryController::class, 'create']);
-Route::get('/categories',[CategoryController::class, 'category']);
-Route::get('/categories/{category}',[CategoryController::class, 'show']);
-Route::get('/categories/{category}/products', [ProductController::class, 'list']);
+Route::get('/categories',[CategoryController::class, 'index'])->name('categories.list');
 
 
 Route::get('/dashboard', function () {
@@ -36,7 +33,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+
+    Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
+        Route::get('create', [ProductController::class, 'create'])->name('create');
+        Route::post('', [ProductController::class, 'store'])->name('store');
+    });
+
+    Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
+        Route::get('create', [CategoryController::class, 'create'])->name('create');
+        Route::post('', [CategoryController::class, 'store'])->name('store');
+    });
 });
 
+Route::get('/categories/{category}', [CategoryController::class, 'show']);
+Route::get('/categories/{category}/products', [ProductController::class, 'list']);
 require __DIR__.'/auth.php';

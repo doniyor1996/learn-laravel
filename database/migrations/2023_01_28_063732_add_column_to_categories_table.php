@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('categories', function (Blueprint $table) {
             $table->string('icon', 40)
+                ->nullable()
                 ->after('name');
         });
     }
