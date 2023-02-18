@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="container mx-auto">
-        <h3>Categories</h3>
+        <h1>Products</h1>
         <ul class="list-disc">
-            @foreach ($categories as $c)
-                <li><a href="/categories/{{$c['id']}}/products">{{ $c['name'] }}</a></li>
+            @foreach ($list as $product)
+                <li><a href="/products/{{$product['id']}}">{{ $product['name'] }}</a></li>
             @endforeach
         </ul>
     </div>
