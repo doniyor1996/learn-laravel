@@ -46,5 +46,5 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/categories/{category}', [CategoryController::class, 'show']);
-Route::get('/categories/{category}/products', [ProductController::class, 'list']);
+Route::get('/categories/{category}/products', [ProductController::class, 'list'])->name('products.list');
 require __DIR__.'/auth.php';
