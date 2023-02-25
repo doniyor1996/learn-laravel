@@ -10,7 +10,13 @@
                 <div class="p-6 text-gray-900">
                     <ul class="list-disc">
                         @foreach ($list as $product)
-                            <li><a href="/products/{{$product['id']}}">{{ $product['name'] }}</a></li>
+                            <li>
+                                <a href="/products/{{$product['id']}}">{{ $product['name'] }}</a>
+                                <span>Цена: {{ $product['price'] }}</span>
+                                @if($product['image'])
+                                    <img src="/{{ $product['image'] }}" width="350">
+                                @endif
+                            </li>
                         @endforeach
                     </ul>
                 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductPostRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Services\FileUploaderService;
 use Illuminate\Http\Request;
 
 
@@ -36,14 +37,16 @@ class ProductController extends Controller
     }
 
 
-    public function store(ProductPostRequest $request)
+    public function store(ProductPostRequest $request, FileUploaderService $fileUploaderService)
     {
-        $validatedData = $request->validate([
-            'category_id' => 'required|exists:categories,id',
-            'name' => 'required|string|min:5|unique:products',
-            'image' => 'string|nullable',
+        $validatedData = $request->validated();
+        unset($validatedData['image']);
+        $product = Product::create($validatedData);
+
+        $product->update([
+            'image' => $fileUploaderService->uploadPhoto($request->image, $product),
         ]);
-        Product::create($validatedData);
+
         return redirect()->route('products.list', [$validatedData['category_id']])->with('status', 'Product created successfully');
 
     }

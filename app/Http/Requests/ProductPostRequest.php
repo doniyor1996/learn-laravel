@@ -3,7 +3,11 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\File;
 
+/**
+ * @property-read \Illuminate\Http\UploadedFile $image
+ */
 class ProductPostRequest extends FormRequest
 {
     /**
@@ -26,7 +30,12 @@ class ProductPostRequest extends FormRequest
         return [
             'category_id' => 'required|exists:categories,id',
             'name' => 'required|string|min:5|unique:products',
-            'image' => 'string|nullable',
+            'price' => 'required|decimal:2|min:0',
+            'image' => [
+                'required',
+                File::image()
+                    ->max(2048),
+            ],
         ];
     }
 }
