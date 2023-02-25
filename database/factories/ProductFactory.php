@@ -20,6 +20,7 @@ class ProductFactory extends Factory
         return [
             'category_id' => Category::factory(),
             'name' => $this->faker->name,
+            'price' => $this->faker->randomFloat(2, max: 9999),
             'image' => strtolower(str_replace(' ','',$this->faker->name)).'.jpg'
         ];
     }

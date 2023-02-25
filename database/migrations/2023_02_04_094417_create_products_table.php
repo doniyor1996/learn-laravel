@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignIdFor(Category::class)
                 ->constrained('categories');
             $table->string('name');
+            $table->decimal('price', 16);
             $table->string('image')->nullable();
             $table->timestamps();
         });
