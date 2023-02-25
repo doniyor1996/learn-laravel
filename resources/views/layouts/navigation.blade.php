@@ -15,15 +15,17 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('categories.create')" :active="request()->routeIs('categories.create')">
-                        Create category
-                    </x-nav-link>
-                    <x-nav-link :href="route('products.create')" :active="request()->routeIs('products.create')">
-                        Create product
-                    </x-nav-link>
-                    <x-nav-link :href="route('users.list')" :active="request()->routeIs('users.list')">
-                        Users
-                    </x-nav-link>
+                    @role('admin')
+                        <x-nav-link :href="route('categories.create')" :active="request()->routeIs('categories.create')">
+                            Create category
+                        </x-nav-link>
+                        <x-nav-link :href="route('products.create')" :active="request()->routeIs('products.create')">
+                            Create product
+                        </x-nav-link>
+                        <x-nav-link :href="route('users.list')" :active="request()->routeIs('users.list')">
+                            Users
+                        </x-nav-link>
+                    @endrole
                 </div>
             </div>
 
