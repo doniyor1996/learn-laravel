@@ -21,7 +21,9 @@
                     <x-nav-link :href="route('products.create')" :active="request()->routeIs('products.create')">
                         Create product
                     </x-nav-link>
-
+                    <x-nav-link :href="route('users.list')" :active="request()->routeIs('users.list')">
+                        Users
+                    </x-nav-link>
                 </div>
             </div>
 
