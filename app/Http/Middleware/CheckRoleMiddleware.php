@@ -10,7 +10,7 @@ class CheckRoleMiddleware
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (!auth()->user()->hasRole('admin')) {
+        if (!auth()->user()->hasRole('admin|superadmin')) {
             return abort(403);
         }
 

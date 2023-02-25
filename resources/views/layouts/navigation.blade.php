@@ -15,7 +15,7 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    @role('admin')
+                    @role('admin|superadmin')
                         <x-nav-link :href="route('categories.create')" :active="request()->routeIs('categories.create')">
                             Create category
                         </x-nav-link>

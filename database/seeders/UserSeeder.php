@@ -18,12 +18,36 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $admin = User::factory()->create([
+        $superAdmin = User::factory()->create([
+            'name' => 'Test super account',
+            'email' => 'super@example.com',
+            'password' => Hash::make('test'),
+        ]);
+        $superAdmin->assignRole('superadmin');
+
+        $admin = User::factory()
+            ->admin()
+            ->create([
             'name' => 'Test account',
             'email' => 'test@example.com',
             'password' => Hash::make('test'),
         ]);
         $admin->assignRole('admin');
+
+        $demo = User::factory()->create([
+            'name' => 'Test demo account',
+            'email' => 'demo@example.com',
+            'password' => Hash::make('test'),
+        ]);
+        $demo->assignRole('user');
+
+        $admins = User::factory()
+            ->count(5)
+            ->admin()
+            ->create();
+        foreach ($admins as $user) {
+            $user->assignRole('admin');
+        }
 
         $users = User::factory()->count(10)->create();
         foreach ($users as $user) {
