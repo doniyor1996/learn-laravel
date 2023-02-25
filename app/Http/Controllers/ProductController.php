@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
+
 class ProductController extends Controller
 {
     /**
@@ -26,7 +27,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create', ['categories' => Category::all()->toArray()]);
+        return view('products.create', ['categories' => Category::all()]);
     }
 
     public function list(Category $category)
@@ -37,6 +38,13 @@ class ProductController extends Controller
 
     public function store(ProductPostRequest $request)
     {
+        $validatedData = $request->validate([
+            'category_id' => 'required|exists:categories,id',
+            'name' => 'required|string|min:5|unique:products',
+            'image' => 'string|nullable',
+        ]);
+        Product::create($validatedData);
+        return redirect()->route('products.list', [$validatedData['category_id']])->with('status', 'Product created successfully');
 
     }
 
