@@ -51,6 +51,7 @@
                                         <input type="file" name="image" id="image"
                                                class="mt-1 block w-2/3 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                                     </div>
+                                    
 
                                 </div>
                             </div>

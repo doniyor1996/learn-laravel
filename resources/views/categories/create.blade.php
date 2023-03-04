@@ -30,8 +30,14 @@
                                     </div>
                                     <div class="col-span-6 sm:col-span-3">
                                         <label for="last-name"
+                                               class="block text-sm font-medium text-gray-700">name</label>
+                                        <input type="file" name="icon" id="image" autocomplete="given-name"
+                                               class="mt-1 block w-2/3 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                    </div>
+                                    <div class="col-span-6 sm:col-span-3">
+                                        <label for="image"
                                                class="block text-sm font-medium text-gray-700">Image</label>
-                                        <input type="text" name="icon" id="last-name" autocomplete="family-name"
+                                        <input type="file" name="icon" id="image" 
                                                class="mt-1 block w-2/3 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                                     </div>
                                 </div>
