@@ -16,6 +16,7 @@
                                 @if($product['image'])
                                     <img src="/{{ $product['image'] }}" width="350">
                                 @endif
+                                <a href="route('products.page')" :active="request()->routeIs('products.page'')">
                             </li>
                         @endforeach
                     </ul>

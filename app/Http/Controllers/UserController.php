@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\User;
+use App\Models\Product;
 
 class UserController extends Controller
 {
@@ -20,4 +21,28 @@ class UserController extends Controller
             'list' => $query->get(),
         ]);
     }
+
+
+    public function edit(Product $product)
+    {
+        return view('users.edit', ['edit' => Product->$product]);
+    }
+
+
+
+    public function update(Request $request, Product $product)
+    {
+        $validatedData = $request->validated();
+        unset($validatedData['user']);
+        $product = Product::user($validatedData);
+
+        $product->update([
+            'user' => $fileUploaderService->uploadPhoto($request->user, $product),
+        ]);
+
+        return redirect()->route('users.edit', [$validatedData['users.id']])->with('status', 'Username successfully updated');
+
+    }
 }
+
+

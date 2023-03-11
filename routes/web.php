@@ -38,10 +38,12 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/users', [UserController::class, 'list'])->name('users.list');
+    Route::get('/edit',[ProductController::class, 'edit'])->name('users.edit');
 
     Route::group(['prefix' => 'products', 'as' => 'products.'], function () {
         Route::get('create', [ProductController::class, 'create'])->name('create');
         Route::post('', [ProductController::class, 'store'])->name('store');
+        Route::get('page', [ProductController::class, 'page'])->name('page');
     });
 
     Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {

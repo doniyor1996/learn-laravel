@@ -25,6 +25,9 @@
                         <x-nav-link :href="route('users.list')" :active="request()->routeIs('users.list')">
                             Users
                         </x-nav-link>
+                        <x-nav-link :href="route('users.edit')" :active="request()->routeIs('users.edit')">
+                            Edit
+                        </x-nav-link>
                     @endrole
                 </div>
             </div>
